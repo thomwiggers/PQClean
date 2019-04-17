@@ -3,6 +3,8 @@
 
 #include <stdint.h>
 
+// some comment to change the diff.
+
 void PQCLEAN_SPHINCSSHAKE256128FSIMPLE_CLEAN_thash_1(
     unsigned char *out, const unsigned char *in,
     const unsigned char *pub_seed, uint32_t addr[8]);
