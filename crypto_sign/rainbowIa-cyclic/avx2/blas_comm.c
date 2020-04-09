@@ -5,6 +5,7 @@
 #include "blas_comm.h"
 #include "blas.h"
 
+#include <assert.h>  // FIXME(js): don't use assert() and don't deal with NDEBUG
 #include <stdint.h>
 #include <string.h>
 
@@ -100,6 +101,7 @@ void gf256mat_mul(uint8_t *c, const uint8_t *a, const uint8_t *b, unsigned len_v
 
 static
 unsigned gf16mat_gauss_elim_ref(uint8_t *mat, unsigned h, unsigned w) {
+    /// assert( 0==(w&1) );  w must be even !!!
     unsigned n_w_byte = (w + 1) / 2;
     unsigned r8 = 1;
     for (unsigned i = 0; i < h; i++) {
@@ -127,6 +129,7 @@ unsigned gf16mat_gauss_elim_ref(uint8_t *mat, unsigned h, unsigned w) {
 
 static
 unsigned gf16mat_solve_linear_eq_ref(uint8_t *sol, const uint8_t *inp_mat, const uint8_t *c_terms, unsigned n) {
+    assert(64 >= n);
     uint8_t mat[64 * 33];
     unsigned n_byte = (n + 1) >> 1;
     for (unsigned i = 0; i < n; i++) {
@@ -202,6 +205,7 @@ unsigned gf256mat_gauss_elim_ref( uint8_t *mat, unsigned h, unsigned w ) {
 
 static
 unsigned gf256mat_solve_linear_eq_ref( uint8_t *sol, const uint8_t *inp_mat, const uint8_t *c_terms, unsigned n ) {
+    assert( 63 >= n );
     uint8_t mat[ 64 * 64 ];
     for (unsigned i = 0; i < n; i++) {
         memcpy( mat + i * (n + 1), inp_mat + i * n, n );

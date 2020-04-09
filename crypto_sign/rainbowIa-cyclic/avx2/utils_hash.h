@@ -7,7 +7,6 @@
 
 
 // for the definition of _HASH_LEN.
-#include "hash_len_config.h"
 
 
 

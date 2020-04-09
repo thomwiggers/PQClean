@@ -9,6 +9,7 @@
 //#define _BLAS_SSE_
 #define _BLAS_AVX2_
 
+#define NDEBUG
 
 
 #endif // _BLAS_CONFIG_H_

@@ -5,39 +5,13 @@
 
 #include "utils_hash.h"
 
-#include "openssl/sha.h"
+#include "sha2.h"
 
-
-#include "hash_len_config.h"
-
-#ifndef _HASH_LEN
-#define _HASH_LEN (32)
-#endif
-
-
-
+#define _HASH_LEN 32
 
 static inline
 int _hash( unsigned char *digest, const unsigned char *m, unsigned long long mlen ) {
-    #if 32 == _HASH_LEN
-    SHA256_CTX sha256;
-    SHA256_Init( &sha256 );
-    SHA256_Update( &sha256, m, mlen );
-    SHA256_Final( digest, &sha256 );
-    #elif 48 == _HASH_LEN
-    SHA512_CTX sha384;
-    SHA384_Init( &sha384 );
-    SHA384_Update( &sha384, m, mlen );
-    SHA384_Final( digest, &sha384 );
-    #elif 64 == _HASH_LEN
-    SHA512_CTX sha512;
-    SHA512_Init( &sha512 );
-    SHA512_Update( &sha512, m, mlen );
-    SHA512_Final( digest, &sha512 );
-    #else
-error:
-    un - supported _HASH_LEN
-    #endif
+    sha256(digest, m, mlen);
     return 0;
 }
 

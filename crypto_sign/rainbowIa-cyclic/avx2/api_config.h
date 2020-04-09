@@ -10,21 +10,12 @@
 
 
 
-#if (!defined(_RAINBOW_CLASSIC))&&(!defined(_RAINBOW_CYCLIC))&&(!defined(_RAINBOW_CYCLIC_COMPRESSED))
-#define _RAINBOW_CYCLIC
-//#define _RAINBOW_CYCLIC
-//#define _RAINBOW_CYCLIC_COMPRESSED
-#endif
 
 
 #if defined _RAINBOW_CLASSIC
 #define _SUFFIX " - classic"
-#elif defined _RAINBOW_CYCLIC
-#define _SUFFIX " - cyclic"
-#elif defined _RAINBOW_CYCLIC_COMPRESSED
-#define _SUFFIX " - cyclic compressed"
 #else
-error here
+#define _SUFFIX " - cyclic"
 #endif
 
 

@@ -54,8 +54,7 @@ void gf16mat_prod_multab_16_sse( uint8_t *c, const uint8_t *matA, unsigned n_A_w
 
 void gf16mat_prod_multab_sse( uint8_t *c, const uint8_t *matA, unsigned n_A_vec_byte, unsigned n_A_width, const uint8_t *multab ) {
     if ( 16 == n_A_vec_byte ) {
-        gf16mat_prod_multab_16_sse(c, matA, n_A_width, multab);
-        return ;
+        return gf16mat_prod_multab_16_sse(c, matA, n_A_width, multab);
     }
     assert( n_A_vec_byte <= 512 );
     __m128i mask_f = _mm_set1_epi8(0xf);
@@ -166,8 +165,7 @@ void gf16mat_prod_16_sse( uint8_t *c, const uint8_t *mat_a, unsigned a_w, const 
 // faster
 void gf16mat_prod_sse( uint8_t *c, const uint8_t *mat_a, unsigned a_h_byte, unsigned a_w, const uint8_t *b ) {
     if ( 16 == a_h_byte && (0 == (a_w & 0x1f)) ) {
-        gf16mat_prod_16_sse(c, mat_a, a_w, b);
-        return ;
+        return gf16mat_prod_16_sse(c, mat_a, a_w, b);
     }
 
     assert( a_w <= 224 );

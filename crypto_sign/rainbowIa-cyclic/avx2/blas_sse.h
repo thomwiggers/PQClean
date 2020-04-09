@@ -8,14 +8,15 @@
 #include "gf16.h"
 
 
-#include "immintrin.h"
-
+#include "emmintrin.h"
+#include "tmmintrin.h"
 
 #include "blas_config.h"
 
 #include "gf16_sse.h"
 
 
+#include "assert.h"
 
 
 
@@ -27,6 +28,8 @@
 static inline
 __m128i _load_xmm( const uint8_t *a, unsigned _num_byte ) {
     uint8_t temp[32] __attribute__((aligned(32)));
+    assert( 16 >= _num_byte );
+    assert( 0 < _num_byte );
     for (unsigned i = 0; i < _num_byte; i++) {
         temp[i] = a[i];
     }
@@ -50,6 +53,8 @@ void loadu_xmm( __m128i *xmm_a, const uint8_t *a, unsigned _num_byte ) {
 static inline
 void _store_xmm( uint8_t *a, unsigned _num_byte, __m128i data ) {
     uint8_t temp[32] __attribute__((aligned(32)));
+    assert( 16 >= _num_byte );
+    assert( 0 < _num_byte );
     _mm_store_si128((__m128i *)temp, data);
     for (unsigned i = 0; i < _num_byte; i++) {
         a[i] = temp[i];
@@ -439,6 +444,7 @@ void gf16v_generate_multab_sse( uint8_t *_multabs, const uint8_t *x, unsigned n 
 
 static inline
 void gf16v_split_sse( uint8_t *x_align32, const uint8_t *_x, unsigned n_gf16 ) {
+    assert( n <= 512 ); /// for spliting gf256v
     uint8_t *x = x_align32;
     unsigned n_byte = (n_gf16 + 1) / 2;
     unsigned n_16 = n_byte >> 4;

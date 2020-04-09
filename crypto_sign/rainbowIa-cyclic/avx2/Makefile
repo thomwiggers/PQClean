@@ -1,6 +1,6 @@
 # This Makefile can be used with GNU Make or BSD Make
 
-LIB=librainbowIa-cyclic_clean.a
+LIB=librainbowIa-cyclic_avx2.a
 
 HEADERS = $(wildcard *.h)
 OBJECTS = $(subst .c,.o,$(wildcard *.c))

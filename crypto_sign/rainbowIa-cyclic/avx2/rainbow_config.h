@@ -12,14 +12,8 @@
 
 
 /// the defined parameter
-#if (!defined(_RAINBOW16_32_32_32))&&(!defined(_RAINBOW256_68_36_36))&&(!defined(_RAINBOW256_92_48_48))
-#define _RAINBOW16_32_32_32
-//#define _RAINBOW256_68_36_36
-//#define _RAINBOW256_92_48_48
-#endif
 
 
-#if defined _RAINBOW16_32_32_32
 #define _USE_GF16
 #define _GFSIZE 16
 #define _V1 32
@@ -27,23 +21,6 @@
 #define _O2 32
 #define _HASH_LEN 32
 
-#elif defined _RAINBOW256_68_36_36
-#define _GFSIZE 256
-#define _V1 68
-#define _O1 36
-#define _O2 36
-#define _HASH_LEN 48
-
-#elif defined _RAINBOW256_92_48_48
-#define _GFSIZE 256
-#define _V1 92
-#define _O1 48
-#define _O2 48
-#define _HASH_LEN 64
-
-#else
-error here.
-#endif
 
 
 #define _V2 ((_V1)+(_O1))
