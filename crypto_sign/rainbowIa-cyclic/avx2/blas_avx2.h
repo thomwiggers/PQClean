@@ -232,20 +232,20 @@ uint8_t gf16v_dot_avx2( const uint8_t *a, const uint8_t *b, unsigned n_byte ) {
 
 
 
-void gf16mat_prod_multab_avx2( uint8_t *c, const uint8_t *matA, unsigned n_A_vec_byte, unsigned n_A_width, const uint8_t *multab );
+void PQCLEAN_RAINBOWIACYCLIC_AVX2_gf16mat_prod_multab_avx2( uint8_t *c, const uint8_t *matA, unsigned n_A_vec_byte, unsigned n_A_width, const uint8_t *multab );
 
-void gf16mat_prod_avx2( uint8_t *c, const uint8_t *mat_a, unsigned a_h_byte, unsigned a_w, const uint8_t *b );
+void PQCLEAN_RAINBOWIACYCLIC_AVX2_gf16mat_prod_avx2( uint8_t *c, const uint8_t *mat_a, unsigned a_h_byte, unsigned a_w, const uint8_t *b );
 
-void gf256mat_prod_multab_avx2( uint8_t *c, const uint8_t *matA, unsigned n_A_vec_byte, unsigned n_A_width, const uint8_t *multab );
+void PQCLEAN_RAINBOWIACYCLIC_AVX2_gf256mat_prod_multab_avx2( uint8_t *c, const uint8_t *matA, unsigned n_A_vec_byte, unsigned n_A_width, const uint8_t *multab );
 
-void gf256mat_prod_avx2( uint8_t *c, const uint8_t *matA, unsigned n_A_vec_byte, unsigned n_A_width, const uint8_t *b );
+void PQCLEAN_RAINBOWIACYCLIC_AVX2_gf256mat_prod_avx2( uint8_t *c, const uint8_t *matA, unsigned n_A_vec_byte, unsigned n_A_width, const uint8_t *b );
 
 
 
 /////////////////////////  gaussian elimination   /////////////////////////////////////////////
 
 
-unsigned gf16mat_solve_linear_eq_avx2( uint8_t *sol, const uint8_t *inp_mat, const uint8_t *c_terms, unsigned n );
+unsigned PQCLEAN_RAINBOWIACYCLIC_AVX2_gf16mat_solve_linear_eq_avx2( uint8_t *sol, const uint8_t *inp_mat, const uint8_t *c_terms, unsigned n );
 
 
 

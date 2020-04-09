@@ -24,7 +24,7 @@
 
 
 
-void gf16mat_prod_16_multab_avx2( uint8_t *c, const uint8_t *matA, unsigned n_A_width, const uint8_t *multab ) {
+void PQCLEAN_RAINBOWIACYCLIC_AVX2_gf16mat_prod_16_multab_avx2( uint8_t *c, const uint8_t *matA, unsigned n_A_width, const uint8_t *multab ) {
     assert( 0 == (n_A_width & 1) );
     __m256i mask_f = _mm256_set1_epi8( 0xf );
 
@@ -49,14 +49,14 @@ void gf16mat_prod_16_multab_avx2( uint8_t *c, const uint8_t *matA, unsigned n_A_
 
 
 
-void gf16mat_prod_multab_avx2( uint8_t *c, const uint8_t *matA, unsigned n_A_vec_byte, unsigned n_A_width, const uint8_t *multab ) {
+void PQCLEAN_RAINBOWIACYCLIC_AVX2_gf16mat_prod_multab_avx2( uint8_t *c, const uint8_t *matA, unsigned n_A_vec_byte, unsigned n_A_width, const uint8_t *multab ) {
     if ( 16 == n_A_vec_byte && (0 == (n_A_width & 1)) ) {
-        return gf16mat_prod_16_multab_avx2(c, matA, n_A_width, multab);
+        return PQCLEAN_RAINBOWIACYCLIC_AVX2_gf16mat_prod_16_multab_avx2(c, matA, n_A_width, multab);
     }
     assert( n_A_width <= 256 );
     assert( n_A_vec_byte <= 512 );
     if ( 16 >= n_A_vec_byte ) {
-        return gf16mat_prod_multab_sse(c, matA, n_A_vec_byte, n_A_width, multab);
+        return PQCLEAN_RAINBOWIACYCLIC_AVX2_gf16mat_prod_multab_sse(c, matA, n_A_vec_byte, n_A_width, multab);
     }
 
     __m256i mask_f = _mm256_load_si256( (__m256i *)__mask_low);
@@ -111,21 +111,21 @@ void gf16mat_prod_multab_avx2( uint8_t *c, const uint8_t *matA, unsigned n_A_vec
 }
 
 #if 0
-void gf16mat_prod_avx2( uint8_t *c, const uint8_t *matA, unsigned n_A_vec_byte, unsigned n_A_width, const uint8_t *b ) {
+void PQCLEAN_RAINBOWIACYCLIC_AVX2_gf16mat_prod_avx2( uint8_t *c, const uint8_t *matA, unsigned n_A_vec_byte, unsigned n_A_width, const uint8_t *b ) {
     assert( n_A_width <= 128 );
     assert( n_A_vec_byte <= 64 );
 
     uint8_t multab[128 * 16] __attribute__((aligned(32)));
     gf16v_generate_multab_sse( multab, b, n_A_width );
 
-    gf16mat_prod_multab_avx2( c, matA, n_A_vec_byte, n_A_width, multab );
+    PQCLEAN_RAINBOWIACYCLIC_AVX2_gf16mat_prod_multab_avx2( c, matA, n_A_vec_byte, n_A_width, multab );
 }
 #else
-void gf16mat_prod_avx2( uint8_t *c, const uint8_t *mat_a, unsigned a_h_byte, unsigned a_w, const uint8_t *b ) {
+void PQCLEAN_RAINBOWIACYCLIC_AVX2_gf16mat_prod_avx2( uint8_t *c, const uint8_t *mat_a, unsigned a_h_byte, unsigned a_w, const uint8_t *b ) {
     assert( a_w <= 256 );
     assert( a_h_byte <= 512 );
     if ( 16 >= a_h_byte ) {
-        return gf16mat_prod_sse(c, mat_a, a_h_byte, a_w, b);
+        return PQCLEAN_RAINBOWIACYCLIC_AVX2_gf16mat_prod_sse(c, mat_a, a_h_byte, a_w, b);
     }
 
     __m256i mask_f = _mm256_load_si256( (__m256i *)__mask_low);
@@ -332,22 +332,22 @@ unsigned _gf16mat_gauss_elim_h32xw64_avx2( const uint8_t *mat ) {
 
 
 
-unsigned gf16mat_solve_linear_eq_avx2( uint8_t *sol, const uint8_t *inp_mat, const uint8_t *c_terms, unsigned n ) {
+unsigned PQCLEAN_RAINBOWIACYCLIC_AVX2_gf16mat_solve_linear_eq_avx2( uint8_t *sol, const uint8_t *inp_mat, const uint8_t *c_terms, unsigned n ) {
     if ( 32 == n ) {
         return _linear_solver_32x32_avx2( sol, inp_mat, c_terms );
     } else  {
-        return gf16mat_solve_linear_eq_sse( sol, inp_mat, c_terms, n );
+        return PQCLEAN_RAINBOWIACYCLIC_AVX2_gf16mat_solve_linear_eq_sse( sol, inp_mat, c_terms, n );
     }
 }
 
 
 
 
-unsigned gf16mat_gauss_elim_avx2( uint8_t *mat, unsigned h, unsigned w ) {
+unsigned PQCLEAN_RAINBOWIACYCLIC_AVX2_gf16mat_gauss_elim_avx2( uint8_t *mat, unsigned h, unsigned w ) {
     if (32 == h && 64 == w) {
         return _gf16mat_gauss_elim_h32xw64_avx2( mat );
     }
-    return gf16mat_gauss_elim_sse( mat, h, w );
+    return PQCLEAN_RAINBOWIACYCLIC_AVX2_gf16mat_gauss_elim_sse( mat, h, w );
 }
 
 
@@ -360,11 +360,11 @@ unsigned gf16mat_gauss_elim_avx2( uint8_t *mat, unsigned h, unsigned w ) {
 
 
 
-void gf256mat_prod_multab_avx2( uint8_t *c, const uint8_t *matA, unsigned n_A_vec_byte, unsigned n_A_width, const uint8_t *multab ) {
+void PQCLEAN_RAINBOWIACYCLIC_AVX2_gf256mat_prod_multab_avx2( uint8_t *c, const uint8_t *matA, unsigned n_A_vec_byte, unsigned n_A_width, const uint8_t *multab ) {
     assert( n_A_width <= 256 );
     assert( n_A_vec_byte <= 48 * 48 );
     if ( 16 >= n_A_vec_byte ) {
-        return gf256mat_prod_multab_sse(c, matA, n_A_vec_byte, n_A_width, multab);
+        return PQCLEAN_RAINBOWIACYCLIC_AVX2_gf256mat_prod_multab_sse(c, matA, n_A_vec_byte, n_A_width, multab);
     }
 
     __m256i mask_f = _mm256_load_si256((__m256i const *) __mask_low);
@@ -400,22 +400,22 @@ void gf256mat_prod_multab_avx2( uint8_t *c, const uint8_t *matA, unsigned n_A_ve
 
 #if 0
 // slower
-void gf256mat_prod_avx2( uint8_t *c, const uint8_t *matA, unsigned n_A_vec_byte, unsigned n_A_width, const uint8_t *b ) {
+void PQCLEAN_RAINBOWIACYCLIC_AVX2_gf256mat_prod_avx2( uint8_t *c, const uint8_t *matA, unsigned n_A_vec_byte, unsigned n_A_width, const uint8_t *b ) {
     assert( n_A_width <= 128 );
     assert( n_A_vec_byte <= 80 );
 
     uint8_t multab[256 * 16] __attribute__((aligned(32)));
     gf256v_generate_multab_sse( multab, b, n_A_width );
 
-    gf256mat_prod_multab_avx2( c, matA, n_A_vec_byte, n_A_width, multab );
+    PQCLEAN_RAINBOWIACYCLIC_AVX2_gf256mat_prod_multab_avx2( c, matA, n_A_vec_byte, n_A_width, multab );
 }
 #else
-void gf256mat_prod_avx2( uint8_t *c, const uint8_t *matA, unsigned n_A_vec_byte, unsigned n_A_width, const uint8_t *b ) {
+void PQCLEAN_RAINBOWIACYCLIC_AVX2_gf256mat_prod_avx2( uint8_t *c, const uint8_t *matA, unsigned n_A_vec_byte, unsigned n_A_width, const uint8_t *b ) {
     assert( n_A_width <= 256 );
     assert( n_A_vec_byte <= 48 * 48 );
     //if( 256 < n_A_vec_byte ) return gf256mat_prod_no_buffer_avx2(c,matA,n_A_vec_byte,n_A_width,b);
     if ( 16 >= n_A_vec_byte ) {
-        return gf256mat_prod_sse(c, matA, n_A_vec_byte, n_A_width, b);
+        return PQCLEAN_RAINBOWIACYCLIC_AVX2_gf256mat_prod_sse(c, matA, n_A_vec_byte, n_A_width, b);
     }
 
     __m256i mask_f = _mm256_load_si256( (__m256i *)__mask_low);
@@ -484,12 +484,12 @@ void gf256mat_prod_avx2( uint8_t *c, const uint8_t *matA, unsigned n_A_vec_byte,
 
 
 
-unsigned gf256mat_gauss_elim_avx2( uint8_t *mat, unsigned h, unsigned w ) {
-    return gf256mat_gauss_elim_sse( mat, h, w );
+unsigned PQCLEAN_RAINBOWIACYCLIC_AVX2_gf256mat_gauss_elim_avx2( uint8_t *mat, unsigned h, unsigned w ) {
+    return PQCLEAN_RAINBOWIACYCLIC_AVX2_gf256mat_gauss_elim_sse( mat, h, w );
 }
 
-unsigned gf256mat_solve_linear_eq_avx2( uint8_t *sol, const uint8_t *inp_mat, const uint8_t *c_terms, unsigned n ) {
-    return gf256mat_solve_linear_eq_sse( sol, inp_mat, c_terms, n );
+unsigned PQCLEAN_RAINBOWIACYCLIC_AVX2_gf256mat_solve_linear_eq_avx2( uint8_t *sol, const uint8_t *inp_mat, const uint8_t *c_terms, unsigned n ) {
+    return PQCLEAN_RAINBOWIACYCLIC_AVX2_gf256mat_solve_linear_eq_sse( sol, inp_mat, c_terms, n );
 }
 
 

@@ -13,7 +13,7 @@
 ////////////////    Section: triangle matrix <-> rectangle matrix   ///////////////////////////////////
 
 
-void UpperTrianglize( unsigned char *btriC, const unsigned char *bA, unsigned Awidth, unsigned size_batch ) {
+void PQCLEAN_RAINBOWIACYCLIC_AVX2_UpperTrianglize( unsigned char *btriC, const unsigned char *bA, unsigned Awidth, unsigned size_batch ) {
     unsigned char *runningC = btriC;
     unsigned Aheight = Awidth;
     for (unsigned i = 0; i < Aheight; i++) {
@@ -33,7 +33,7 @@ void UpperTrianglize( unsigned char *btriC, const unsigned char *bA, unsigned Aw
 
 
 
-void batch_trimat_madd_gf16( unsigned char *bC, const unsigned char *btriA,
+void PQCLEAN_RAINBOWIACYCLIC_AVX2_batch_trimat_madd_gf16( unsigned char *bC, const unsigned char *btriA,
                              const unsigned char *B, unsigned Bheight, unsigned size_Bcolvec, unsigned Bwidth, unsigned size_batch ) {
     unsigned Awidth = Bheight;
     unsigned Aheight = Awidth;
@@ -51,7 +51,7 @@ void batch_trimat_madd_gf16( unsigned char *bC, const unsigned char *btriA,
     }
 }
 
-void batch_trimat_madd_gf256( unsigned char *bC, const unsigned char *btriA,
+void PQCLEAN_RAINBOWIACYCLIC_AVX2_batch_trimat_madd_gf256( unsigned char *bC, const unsigned char *btriA,
                               const unsigned char *B, unsigned Bheight, unsigned size_Bcolvec, unsigned Bwidth, unsigned size_batch ) {
     unsigned Awidth = Bheight;
     unsigned Aheight = Awidth;
@@ -73,7 +73,7 @@ void batch_trimat_madd_gf256( unsigned char *bC, const unsigned char *btriA,
 
 
 
-void batch_trimatTr_madd_gf16( unsigned char *bC, const unsigned char *btriA,
+void PQCLEAN_RAINBOWIACYCLIC_AVX2_batch_trimatTr_madd_gf16( unsigned char *bC, const unsigned char *btriA,
                                const unsigned char *B, unsigned Bheight, unsigned size_Bcolvec, unsigned Bwidth, unsigned size_batch ) {
     unsigned Aheight = Bheight;
     for (unsigned i = 0; i < Aheight; i++) {
@@ -89,7 +89,7 @@ void batch_trimatTr_madd_gf16( unsigned char *bC, const unsigned char *btriA,
     }
 }
 
-void batch_trimatTr_madd_gf256( unsigned char *bC, const unsigned char *btriA,
+void PQCLEAN_RAINBOWIACYCLIC_AVX2_batch_trimatTr_madd_gf256( unsigned char *bC, const unsigned char *btriA,
                                 const unsigned char *B, unsigned Bheight, unsigned size_Bcolvec, unsigned Bwidth, unsigned size_batch ) {
     unsigned Aheight = Bheight;
     for (unsigned i = 0; i < Aheight; i++) {
@@ -108,7 +108,7 @@ void batch_trimatTr_madd_gf256( unsigned char *bC, const unsigned char *btriA,
 
 
 
-void batch_2trimat_madd_gf16( unsigned char *bC, const unsigned char *btriA,
+void PQCLEAN_RAINBOWIACYCLIC_AVX2_batch_2trimat_madd_gf16( unsigned char *bC, const unsigned char *btriA,
                               const unsigned char *B, unsigned Bheight, unsigned size_Bcolvec, unsigned Bwidth, unsigned size_batch ) {
     unsigned Aheight = Bheight;
     for (unsigned i = 0; i < Aheight; i++) {
@@ -124,7 +124,7 @@ void batch_2trimat_madd_gf16( unsigned char *bC, const unsigned char *btriA,
     }
 }
 
-void batch_2trimat_madd_gf256( unsigned char *bC, const unsigned char *btriA,
+void PQCLEAN_RAINBOWIACYCLIC_AVX2_batch_2trimat_madd_gf256( unsigned char *bC, const unsigned char *btriA,
                                const unsigned char *B, unsigned Bheight, unsigned size_Bcolvec, unsigned Bwidth, unsigned size_batch ) {
     unsigned Aheight = Bheight;
     for (unsigned i = 0; i < Aheight; i++) {
@@ -143,7 +143,7 @@ void batch_2trimat_madd_gf256( unsigned char *bC, const unsigned char *btriA,
 
 
 
-void batch_matTr_madd_gf16( unsigned char *bC, const unsigned char *A_to_tr, unsigned Aheight, unsigned size_Acolvec, unsigned Awidth,
+void PQCLEAN_RAINBOWIACYCLIC_AVX2_batch_matTr_madd_gf16( unsigned char *bC, const unsigned char *A_to_tr, unsigned Aheight, unsigned size_Acolvec, unsigned Awidth,
                             const unsigned char *bB, unsigned Bwidth, unsigned size_batch ) {
     unsigned Atr_height = Awidth;
     unsigned Atr_width  = Aheight;
@@ -155,7 +155,7 @@ void batch_matTr_madd_gf16( unsigned char *bC, const unsigned char *A_to_tr, uns
     }
 }
 
-void batch_matTr_madd_gf256( unsigned char *bC, const unsigned char *A_to_tr, unsigned Aheight, unsigned size_Acolvec, unsigned Awidth,
+void PQCLEAN_RAINBOWIACYCLIC_AVX2_batch_matTr_madd_gf256( unsigned char *bC, const unsigned char *A_to_tr, unsigned Aheight, unsigned size_Acolvec, unsigned Awidth,
                              const unsigned char *bB, unsigned Bwidth, unsigned size_batch ) {
     unsigned Atr_height = Awidth;
     unsigned Atr_width  = Aheight;
@@ -170,7 +170,7 @@ void batch_matTr_madd_gf256( unsigned char *bC, const unsigned char *A_to_tr, un
 
 
 
-void batch_bmatTr_madd_gf16( unsigned char *bC, const unsigned char *bA_to_tr, unsigned Awidth_before_tr,
+void PQCLEAN_RAINBOWIACYCLIC_AVX2_batch_bmatTr_madd_gf16( unsigned char *bC, const unsigned char *bA_to_tr, unsigned Awidth_before_tr,
                              const unsigned char *B, unsigned Bheight, unsigned size_Bcolvec, unsigned Bwidth, unsigned size_batch ) {
     const unsigned char *bA = bA_to_tr;
     unsigned Aheight = Awidth_before_tr;
@@ -184,7 +184,7 @@ void batch_bmatTr_madd_gf16( unsigned char *bC, const unsigned char *bA_to_tr, u
     }
 }
 
-void batch_bmatTr_madd_gf256( unsigned char *bC, const unsigned char *bA_to_tr, unsigned Awidth_before_tr,
+void PQCLEAN_RAINBOWIACYCLIC_AVX2_batch_bmatTr_madd_gf256( unsigned char *bC, const unsigned char *bA_to_tr, unsigned Awidth_before_tr,
                               const unsigned char *B, unsigned Bheight, unsigned size_Bcolvec, unsigned Bwidth, unsigned size_batch ) {
     const unsigned char *bA = bA_to_tr;
     unsigned Aheight = Awidth_before_tr;
@@ -202,7 +202,7 @@ void batch_bmatTr_madd_gf256( unsigned char *bC, const unsigned char *bA_to_tr, 
 
 
 
-void batch_mat_madd_gf16( unsigned char *bC, const unsigned char *bA, unsigned Aheight,
+void PQCLEAN_RAINBOWIACYCLIC_AVX2_batch_mat_madd_gf16( unsigned char *bC, const unsigned char *bA, unsigned Aheight,
                           const unsigned char *B, unsigned Bheight, unsigned size_Bcolvec, unsigned Bwidth, unsigned size_batch ) {
     unsigned Awidth = Bheight;
     for (unsigned i = 0; i < Aheight; i++) {
@@ -216,7 +216,7 @@ void batch_mat_madd_gf16( unsigned char *bC, const unsigned char *bA, unsigned A
     }
 }
 
-void batch_mat_madd_gf256( unsigned char *bC, const unsigned char *bA, unsigned Aheight,
+void PQCLEAN_RAINBOWIACYCLIC_AVX2_batch_mat_madd_gf256( unsigned char *bC, const unsigned char *bA, unsigned Aheight,
                            const unsigned char *B, unsigned Bheight, unsigned size_Bcolvec, unsigned Bwidth, unsigned size_batch ) {
     unsigned Awidth = Bheight;
     for (unsigned i = 0; i < Aheight; i++) {
@@ -238,7 +238,7 @@ void batch_mat_madd_gf256( unsigned char *bC, const unsigned char *bA, unsigned 
 
 
 
-void batch_quad_trimat_eval_gf16( unsigned char *y, const unsigned char *trimat, const unsigned char *x, unsigned dim, unsigned size_batch ) {
+void PQCLEAN_RAINBOWIACYCLIC_AVX2_batch_quad_trimat_eval_gf16( unsigned char *y, const unsigned char *trimat, const unsigned char *x, unsigned dim, unsigned size_batch ) {
 ///
 ///    assert( dim <= 128 );
 ///    assert( size_batch <= 128 );
@@ -249,9 +249,9 @@ void batch_quad_trimat_eval_gf16( unsigned char *y, const unsigned char *trimat,
         _x[i] = gf16v_get_ele( x, i );
     }
 
-    gf256v_set_zero( y, size_batch );
+    PQCLEAN_RAINBOWIACYCLIC_AVX2_gf256v_set_zero( y, size_batch );
     for (unsigned i = 0; i < dim; i++) {
-        gf256v_set_zero( tmp, size_batch );
+        PQCLEAN_RAINBOWIACYCLIC_AVX2_gf256v_set_zero( tmp, size_batch );
         for (unsigned j = i; j < dim; j++) {
             gf16v_madd( tmp, trimat, _x[j], size_batch );
             trimat += size_batch;
@@ -260,7 +260,7 @@ void batch_quad_trimat_eval_gf16( unsigned char *y, const unsigned char *trimat,
     }
 }
 
-void batch_quad_trimat_eval_gf256( unsigned char *y, const unsigned char *trimat, const unsigned char *x, unsigned dim, unsigned size_batch ) {
+void PQCLEAN_RAINBOWIACYCLIC_AVX2_batch_quad_trimat_eval_gf256( unsigned char *y, const unsigned char *trimat, const unsigned char *x, unsigned dim, unsigned size_batch ) {
 ///
 ///    assert( dim <= 256 );
 ///    assert( size_batch <= 256 );
@@ -271,9 +271,9 @@ void batch_quad_trimat_eval_gf256( unsigned char *y, const unsigned char *trimat
         _x[i] = gf256v_get_ele( x, i );
     }
 
-    gf256v_set_zero( y, size_batch );
+    PQCLEAN_RAINBOWIACYCLIC_AVX2_gf256v_set_zero( y, size_batch );
     for (unsigned i = 0; i < dim; i++) {
-        gf256v_set_zero( tmp, size_batch );
+        PQCLEAN_RAINBOWIACYCLIC_AVX2_gf256v_set_zero( tmp, size_batch );
         for (unsigned j = i; j < dim; j++) {
             gf256v_madd( tmp, trimat, _x[j], size_batch );
             trimat += size_batch;
@@ -288,7 +288,7 @@ void batch_quad_trimat_eval_gf256( unsigned char *y, const unsigned char *trimat
 
 
 
-void batch_quad_recmat_eval_gf16( unsigned char *z, const unsigned char *y, unsigned dim_y, const unsigned char *mat,
+void PQCLEAN_RAINBOWIACYCLIC_AVX2_batch_quad_recmat_eval_gf16( unsigned char *z, const unsigned char *y, unsigned dim_y, const unsigned char *mat,
                                   const unsigned char *x, unsigned dim_x, unsigned size_batch ) {
 ///
 ///    assert( dim_x <= 128 );
@@ -305,9 +305,9 @@ void batch_quad_recmat_eval_gf16( unsigned char *z, const unsigned char *y, unsi
         _y[i] = gf16v_get_ele( y, i );
     }
 
-    gf256v_set_zero( z, size_batch );
+    PQCLEAN_RAINBOWIACYCLIC_AVX2_gf256v_set_zero( z, size_batch );
     for (unsigned i = 0; i < dim_y; i++) {
-        gf256v_set_zero( tmp, size_batch );
+        PQCLEAN_RAINBOWIACYCLIC_AVX2_gf256v_set_zero( tmp, size_batch );
         for (unsigned j = 0; j < dim_x; j++) {
             gf16v_madd( tmp, mat, _x[j], size_batch );
             mat += size_batch;
@@ -317,7 +317,7 @@ void batch_quad_recmat_eval_gf16( unsigned char *z, const unsigned char *y, unsi
 }
 
 
-void batch_quad_recmat_eval_gf256( unsigned char *z, const unsigned char *y, unsigned dim_y, const unsigned char *mat,
+void PQCLEAN_RAINBOWIACYCLIC_AVX2_batch_quad_recmat_eval_gf256( unsigned char *z, const unsigned char *y, unsigned dim_y, const unsigned char *mat,
                                    const unsigned char *x, unsigned dim_x, unsigned size_batch ) {
 ///
 ///    assert( dim_x <= 128 );
@@ -334,9 +334,9 @@ void batch_quad_recmat_eval_gf256( unsigned char *z, const unsigned char *y, uns
         _y[i] = gf256v_get_ele( y, i );
     }
 
-    gf256v_set_zero( z, size_batch );
+    PQCLEAN_RAINBOWIACYCLIC_AVX2_gf256v_set_zero( z, size_batch );
     for (unsigned i = 0; i < dim_y; i++) {
-        gf256v_set_zero( tmp, size_batch );
+        PQCLEAN_RAINBOWIACYCLIC_AVX2_gf256v_set_zero( tmp, size_batch );
         for (unsigned j = 0; j < dim_x; j++) {
             gf256v_madd( tmp, mat, _x[j], size_batch );
             mat += size_batch;

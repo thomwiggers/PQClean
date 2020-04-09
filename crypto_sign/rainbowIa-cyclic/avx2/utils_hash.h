@@ -11,7 +11,7 @@
 
 
 
-int hash_msg( unsigned char *digest, unsigned len_digest, const unsigned char *m, unsigned long long mlen );
+int PQCLEAN_RAINBOWIACYCLIC_AVX2_hash_msg( unsigned char *digest, unsigned len_digest, const unsigned char *m, unsigned long long mlen );
 
 
 

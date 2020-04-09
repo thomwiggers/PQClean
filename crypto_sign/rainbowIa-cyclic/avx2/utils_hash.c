@@ -52,7 +52,7 @@ int expand_hash( unsigned char *digest, unsigned n_digest, const unsigned char *
 
 
 
-int hash_msg( unsigned char *digest, unsigned len_digest, const unsigned char *m, unsigned long long mlen ) {
+int PQCLEAN_RAINBOWIACYCLIC_AVX2_hash_msg( unsigned char *digest, unsigned len_digest, const unsigned char *m, unsigned long long mlen ) {
     unsigned char buf[_HASH_LEN];
     _hash( buf, m, mlen );
 

@@ -15,9 +15,9 @@ typedef struct {
 } prng_t;
 
 
-int prng_set(prng_t *ctx, const void *prng_seed, unsigned long prng_seedlen);
+int PQCLEAN_RAINBOWIACYCLIC_AVX2_prng_set(prng_t *ctx, const void *prng_seed, unsigned long prng_seedlen);
 
-int prng_gen(prng_t *ctx, unsigned char *out, unsigned long outlen);
+int PQCLEAN_RAINBOWIACYCLIC_AVX2_prng_gen(prng_t *ctx, unsigned char *out, unsigned long outlen);
 
 
 
