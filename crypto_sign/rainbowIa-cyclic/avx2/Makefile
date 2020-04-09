@@ -5,7 +5,7 @@ LIB=librainbowIa-cyclic_avx2.a
 HEADERS = $(wildcard *.h)
 OBJECTS = $(subst .c,.o,$(wildcard *.c))
 
-CFLAGS=-O3 -std=c11 -mavx2 -Wall -Wextra -Wpedantic -I../../../common $(EXTRAFLAGS)
+CFLAGS=-O3 -std=c11 -mavx2 -Wall -Wextra -Wpedantic -Wvla -Wpointer-arith -Wshadow -Wundef -Wmissing-prototypes -fstrict-aliasing -fno-common -pipe -I../../../common $(EXTRAFLAGS)
 
 all: $(LIB)
 
