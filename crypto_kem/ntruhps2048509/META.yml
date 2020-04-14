@@ -21,3 +21,5 @@ auxiliary-submitters:
 implementations:
     - name: clean
       version: https://csrc.nist.gov/CSRC/media/Projects/Post-Quantum-Cryptography/documents/round-2/submissions/NTRU-Round2.zip reference implemntation
+    - name: avx2
+      version: https://github.com/jschanck/ntru/commit/485dde03c01b16b4629bef60c4d1f095ddd9e04b

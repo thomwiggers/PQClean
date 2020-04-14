@@ -16,7 +16,6 @@ COMMON_HEADERS=$(COMMON_DIR)/*.h
 DEST_DIR=../bin
 
 SCHEME_LIBRARY=$(SCHEME_DIR)/lib$(SCHEME)_$(IMPLEMENTATION).a
-SCHEME_FILES=$(wildcard $(SCHEME_DIR)/*.[chsS])
 
 # This -Wall was supported by the European Commission through the ERC Starting Grant 805031 (EPOQUE)
 CFLAGS=-O3 -Wall -Wextra -Wpedantic -Wvla -Werror -std=c99 \
@@ -34,8 +33,10 @@ all: $(DEST_DIR)/functest_$(SCHEME)_$(IMPLEMENTATION) \
 .PHONY: build-scheme
 build-scheme: $(SCHEME_LIBRARY)
 
-$(SCHEME_LIBRARY): $(SCHEME_FILES)
-	cd $(SCHEME_DIR) && $(MAKE)
+.PHONY: always
+
+$(SCHEME_LIBRARY): always
+	$(MAKE) -C $(SCHEME_DIR) lib$(SCHEME)_$(IMPLEMENTATION).a
 
 .PHONY: clean-scheme
 clean-scheme:
