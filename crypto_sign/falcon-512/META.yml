@@ -21,3 +21,5 @@ auxiliary-submitters:
 implementations:
     - name: clean
       version: 20190920
+    - name: avx2
+      version: 20190918
