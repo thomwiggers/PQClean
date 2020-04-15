@@ -18,3 +18,9 @@ implementations:
       version: https://github.com/fast-crypto-lab/rainbow-submission-round2/commit/af826fcb78f6af51a02d0352cff28a9690467bfd
     - name: avx2
       version: https://github.com/fast-crypto-lab/rainbow-submission-round2/commit/277fbea18444a0b817ae8ff7f86a491dbec6efaa
+      supported_platforms:
+          - architecture: x86_64
+            operating_systems:
+                - Linux
+            required_flags:
+                - avx2

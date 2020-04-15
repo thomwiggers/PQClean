@@ -1,7 +1,7 @@
 #define int32_MINMAX(a,b) \
 do { \
   int32 temp1; \
-  __asm__( \
+  __asm__ ( \
     "cmpl %1,%0\n\t" \
     "mov %0,%2\n\t" \
     "cmovg %1,%0\n\t" \

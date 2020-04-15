@@ -1,5 +1,5 @@
 LIB=libntruhps2048509_avx2.a
-CFLAGS=-O3 -mavx2 -mbmi2 -Wall -Wextra -Wpedantic -Wvla -Werror -Wredundant-decls -std=gnu99 -I../../../common $(EXTRAFLAGS)
+CFLAGS=-O3 -mavx2 -mbmi2 -Wall -Wextra -Wpedantic -Wvla -Werror -Wredundant-decls -std=c99 -I../../../common $(EXTRAFLAGS)
 
 SRC = crypto_sort_int32.c \
       sort.c \

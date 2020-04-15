@@ -23,3 +23,11 @@ implementations:
       version: 20190920
     - name: avx2
       version: 20190918
+      supported_platforms:
+          - architecture: x86_64
+            operating_systems:
+                - Darwin
+                - Linux
+            required_flags:
+                - avx2
+                - fma
