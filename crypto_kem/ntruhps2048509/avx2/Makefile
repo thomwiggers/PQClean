@@ -2,7 +2,7 @@ LIB=libntruhps2048509_avx2.a
 CFLAGS=-O3 -mavx2 -mbmi2 -Wall -Wextra -Wpedantic -Wvla -Werror -Wredundant-decls -std=gnu99 -I../../../common $(EXTRAFLAGS)
 
 SRC = crypto_sort_int32.c \
-      djbsort/sort.c \
+      sort.c \
       kem.c \
       owcpa.c \
       pack3.c \
@@ -16,7 +16,7 @@ SRC = crypto_sort_int32.c \
       verify.c
 
 
-HEADERS = djbsort/int32_sort.h\
+HEADERS = int32_sort.h\
       crypto_sort_int32.h \
       kem.h \
       owcpa.h \

@@ -1,6 +1,6 @@
 #include <stdint.h>
 #include "crypto_sort_int32.h"
-#include "djbsort/int32_sort.h"
+#include "int32_sort.h"
 
 // The avx2 version of djbsort (version 20180729) is used for sorting.
 // The source can be found at https://sorting.cr.yp.to/
