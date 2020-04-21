@@ -155,10 +155,12 @@ static int test_shake128_incremental(void) {
     }
 
     shake128_absorb((shake128ctx*)&state_squeeze, input, 512);
+#ifdef PQC_HEAPBASED_PRIMITIVES
     state_squeeze.ctx = realloc(state_squeeze.ctx, PQC_SHAKEINCCTX_BYTES);
     if (state_squeeze.ctx == NULL) {
         exit(111);
     }
+#endif
     state_squeeze.ctx[25] = 0;
 
     shake128_inc_ctx_clone(&state_squeeze_all, &state_squeeze);

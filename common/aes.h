@@ -12,20 +12,34 @@
 
 // We've put these states on the heap to make sure ctx_release is used.
 #define PQC_AES128_STATESIZE 88
+#define PQC_AES192_STATESIZE 104
+#define PQC_AES256_STATESIZE 120
+
+#ifdef PQC_HEAPBASED_PRIMITIVES
 typedef struct {
     uint64_t* sk_exp;
 } aes128ctx;
 
-#define PQC_AES192_STATESIZE 104
 typedef struct {
     uint64_t*  sk_exp;
 } aes192ctx;
 
-#define PQC_AES256_STATESIZE 120
 typedef struct {
     uint64_t* sk_exp;
 } aes256ctx;
+#else
+typedef struct {
+    uint64_t sk_exp[sizeof(uint64_t) * PQC_AES192_STATESIZE];
+} aes128ctx;
 
+typedef struct {
+    uint64_t sk_exp[sizeof(uint64_t) * PQC_AES192_STATESIZE];
+} aes192ctx;
+
+typedef struct {
+    uint64_t sk_exp[sizeof(uint64_t) * PQC_AES256_STATESIZE];
+} aes256ctx;
+#endif
 
 
 /** Initializes the context **/

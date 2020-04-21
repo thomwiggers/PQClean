@@ -14,40 +14,42 @@
 #define PQC_SHAKEINCCTX_BYTES (sizeof(uint64_t)*26)
 #define PQC_SHAKECTX_BYTES (sizeof(uint64_t)*25)
 
+#ifdef PQC_HEAPBASED_PRIMITIVES
+#define SHAKESTRUCT struct { \
+        uint64_t* ctx;       \
+    }
+#define SHAKEINCSTRUCT struct { \
+        uint64_t* ctx;          \
+    }
+#else
+#define SHAKESTRUCT struct {              \
+        uint64_t ctx[25]; \
+    }
+#define SHAKEINCSTRUCT struct {              \
+        uint64_t ctx[26]; \
+    }
+#endif
+
 // Context for incremental API
-typedef struct {
-    uint64_t* ctx;
-} shake128incctx;
+typedef SHAKEINCSTRUCT shake128incctx;
 
 // Context for non-incremental API
-typedef struct {
-    uint64_t* ctx;
-} shake128ctx;
+typedef SHAKESTRUCT shake128ctx;
 
 // Context for incremental API
-typedef struct {
-    uint64_t* ctx;
-} shake256incctx;
+typedef SHAKEINCSTRUCT shake256incctx;
 
 // Context for non-incremental API
-typedef struct {
-    uint64_t* ctx;
-} shake256ctx;
+typedef SHAKESTRUCT shake256ctx;
 
 // Context for incremental API
-typedef struct {
-    uint64_t* ctx;
-} sha3_256incctx;
+typedef SHAKEINCSTRUCT sha3_256incctx;
 
 // Context for incremental API
-typedef struct {
-    uint64_t* ctx;
-} sha3_384incctx;
+typedef SHAKEINCSTRUCT sha3_384incctx;
 
 // Context for incremental API
-typedef struct {
-    uint64_t* ctx;
-} sha3_512incctx;
+typedef SHAKEINCSTRUCT sha3_512incctx;
 
 /* Initialize the state and absorb the provided input.
  *

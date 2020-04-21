@@ -495,10 +495,12 @@ static const uint8_t iv_512[64] = {
 };
 
 void sha224_inc_init(sha224ctx *state) {
+#ifdef PQC_HEAPBASED_PRIMITIVES
     state->ctx = malloc(PQC_SHA256CTX_BYTES);
     if (state->ctx == NULL) {
         exit(111);
     }
+#endif
     for (size_t i = 0; i < 32; ++i) {
         state->ctx[i] = iv_224[i];
     }
@@ -508,10 +510,12 @@ void sha224_inc_init(sha224ctx *state) {
 }
 
 void sha256_inc_init(sha256ctx *state) {
+#ifdef PQC_HEAPBASED_PRIMITIVES
     state->ctx = malloc(PQC_SHA256CTX_BYTES);
     if (state->ctx == NULL) {
         exit(111);
     }
+#endif
     for (size_t i = 0; i < 32; ++i) {
         state->ctx[i] = iv_256[i];
     }
@@ -521,10 +525,12 @@ void sha256_inc_init(sha256ctx *state) {
 }
 
 void sha384_inc_init(sha384ctx *state) {
+#ifdef PQC_HEAPBASED_PRIMITIVES
     state->ctx = malloc(PQC_SHA512CTX_BYTES);
     if (state->ctx == NULL) {
         exit(111);
     }
+#endif
     for (size_t i = 0; i < 64; ++i) {
         state->ctx[i] = iv_384[i];
     }
@@ -534,10 +540,12 @@ void sha384_inc_init(sha384ctx *state) {
 }
 
 void sha512_inc_init(sha512ctx *state) {
+#ifdef PQC_HEAPBASED_PRIMITIVES
     state->ctx = malloc(PQC_SHA512CTX_BYTES);
     if (state->ctx == NULL) {
         exit(111);
     }
+#endif
     for (size_t i = 0; i < 64; ++i) {
         state->ctx[i] = iv_512[i];
     }
@@ -547,55 +555,79 @@ void sha512_inc_init(sha512ctx *state) {
 }
 
 void sha224_inc_ctx_clone(sha224ctx *stateout, const sha224ctx *statein) {
+#ifdef PQC_HEAPBASED_PRIMITIVES
     stateout->ctx = malloc(PQC_SHA256CTX_BYTES);
     if (stateout->ctx == NULL) {
         exit(111);
     }
+#endif
     memcpy(stateout->ctx, statein->ctx, PQC_SHA256CTX_BYTES);
 }
 
 void sha256_inc_ctx_clone(sha256ctx *stateout, const sha256ctx *statein) {
+#ifdef PQC_HEAPBASED_PRIMITIVES
     stateout->ctx = malloc(PQC_SHA256CTX_BYTES);
     if (stateout->ctx == NULL) {
         exit(111);
     }
+#endif
     memcpy(stateout->ctx, statein->ctx, PQC_SHA256CTX_BYTES);
 }
 
 void sha384_inc_ctx_clone(sha384ctx *stateout, const sha384ctx *statein) {
+#ifdef PQC_HEAPBASED_PRIMITIVES
     stateout->ctx = malloc(PQC_SHA512CTX_BYTES);
     if (stateout->ctx == NULL) {
         exit(111);
     }
+#endif
     memcpy(stateout->ctx, statein->ctx, PQC_SHA512CTX_BYTES);
 }
 
 void sha512_inc_ctx_clone(sha512ctx *stateout, const sha512ctx *statein) {
+#ifdef PQC_HEAPBASED_PRIMITIVES
     stateout->ctx = malloc(PQC_SHA512CTX_BYTES);
     if (stateout->ctx == NULL) {
         exit(111);
     }
+#endif
     memcpy(stateout->ctx, statein->ctx, PQC_SHA512CTX_BYTES);
 }
 
 /* Destroy the hash state. */
 void sha224_inc_ctx_release(sha224ctx *state) {
+#ifdef PQC_HEAPBASED_PRIMITIVES
     free(state->ctx);
+#else
+    (void)state;
+#endif
 }
 
 /* Destroy the hash state. */
 void sha256_inc_ctx_release(sha256ctx *state) {
+#ifdef PQC_HEAPBASED_PRIMITIVES
     free(state->ctx);
+#else
+    (void)state;
+#endif
 }
 
 /* Destroy the hash state. */
 void sha384_inc_ctx_release(sha384ctx *state) {
+#ifdef PQC_HEAPBASED_PRIMITIVES
     free(state->ctx);
+#else
+    (void)state;
+#endif
 }
 
 /* Destroy the hash state. */
 void sha512_inc_ctx_release(sha512ctx *state) {
+#ifdef PQC_HEAPBASED_PRIMITIVES
     free(state->ctx);
+#else
+    (void)state;
+#endif
 }
 
 void sha256_inc_blocks(sha256ctx *state, const uint8_t *in, size_t inblocks) {

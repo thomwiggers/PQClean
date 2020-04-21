@@ -11,23 +11,39 @@
 #define PQC_SHA256CTX_BYTES 40
 /* Structure for the incremental API */
 typedef struct {
+#ifdef PQC_HEAPBASED_PRIMITIVES
     uint8_t *ctx;
+#else
+    uint8_t ctx[PQC_SHA256CTX_BYTES];
+#endif
 } sha224ctx;
 
 /* Structure for the incremental API */
 typedef struct {
+#ifdef PQC_HEAPBASED_PRIMITIVES
     uint8_t *ctx;
+#else
+    uint8_t ctx[PQC_SHA256CTX_BYTES];
+#endif
 } sha256ctx;
 
 #define PQC_SHA512CTX_BYTES 72
 /* Structure for the incremental API */
 typedef struct {
+#ifdef PQC_HEAPBASED_PRIMITIVES
     uint8_t *ctx;
+#else
+    uint8_t ctx[PQC_SHA512CTX_BYTES];
+#endif
 } sha384ctx;
 
 /* Structure for the incremental API */
 typedef struct {
+#ifdef PQC_HEAPBASED_PRIMITIVES
     uint8_t *ctx;
+#else
+    uint8_t ctx[PQC_SHA512CTX_BYTES];
+#endif
 } sha512ctx;
 
 /* ====== SHA224 API ==== */
