@@ -42,8 +42,9 @@ def test_nistkat(implementation, impl_path, test_dir, init, destr):
         ))],
         print_output=False,
     ).replace('\r', '')
-    assert(implementation.scheme.metadata()['nistkat-sha256'].lower()
-           == hashlib.sha256(out.encode('utf-8')).hexdigest().lower())
+    expected = implementation.scheme.metadata()['nistkat-sha256'].lower()
+    got = hashlib.sha256(out.encode('utf-8')).hexdigest().lower()
+    assert (expected == got), "Got {}\n".format(got)
     destr()
 
 

@@ -42,8 +42,8 @@ int main() {
     uint8_t entropy_input[48];
     uint8_t seed[48];
     FILE *fh = stdout;
-    uint8_t public_key[CRYPTO_PUBLICKEYBYTES];
-    uint8_t secret_key[CRYPTO_SECRETKEYBYTES];
+    uint8_t public_key[CRYPTO_PUBLICKEYBYTES] = {0};
+    uint8_t secret_key[CRYPTO_SECRETKEYBYTES] = {0};
     size_t mlen = 33;
     size_t smlen, mlen1;
     uint8_t m[33];

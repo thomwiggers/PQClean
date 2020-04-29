@@ -32,12 +32,12 @@ static void printbytes(const uint8_t *x, size_t xlen) {
 #define crypto_sign_verify NAMESPACE(crypto_sign_verify)
 
 int main(void) {
-    uint8_t sk[CRYPTO_SECRETKEYBYTES];
-    uint8_t pk[CRYPTO_PUBLICKEYBYTES];
+    uint8_t sk[CRYPTO_SECRETKEYBYTES] = {0};
+    uint8_t pk[CRYPTO_PUBLICKEYBYTES] = {0};
 
     uint8_t mi[MAXMLEN];
-    uint8_t sm[MAXMLEN + CRYPTO_BYTES];
-    uint8_t sig[CRYPTO_BYTES];
+    uint8_t sm[MAXMLEN + CRYPTO_BYTES] = {0};
+    uint8_t sig[CRYPTO_BYTES] = {0};
 
     size_t smlen;
     size_t siglen;
