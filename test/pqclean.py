@@ -67,8 +67,7 @@ class Scheme:
                 metadata = yaml.safe_load(f.read())
                 return metadata
         except Exception as e:
-            print("Can't open {}: {}".format(metafile, e))
-            return None
+            raise Exception("Can't open {}: {}".format(metafile, e))
 
     def __repr__(self):
         return "<{}({})>".format(self.type.title(), self.name)
@@ -84,6 +83,7 @@ class Implementation:
         for i in self.scheme.metadata()['implementations']:
             if i['name'] == self.name:
                 return i
+        raise ValueError("No metadata for this implementation: {}".format(self))
 
     def path(self, base='..') -> str:
         return os.path.join(self.scheme.path(base=base), self.name)

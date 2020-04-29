@@ -95,10 +95,10 @@ static int test_sign(void) {
      * data alignment. For example this would catch if an implementation
      * directly uses these pointers to load into vector registers using movdqa.
      */
-    uint8_t *pk = (uint8_t *) ((uintptr_t) pk_aligned|(uintptr_t) 1);
-    uint8_t *sk = (uint8_t *) ((uintptr_t) sk_aligned|(uintptr_t) 1);
-    uint8_t *sm = (uint8_t *) ((uintptr_t) sm_aligned|(uintptr_t) 1);
-    uint8_t *m  = (uint8_t *) ((uintptr_t) m_aligned|(uintptr_t) 1);
+    uint8_t *pk = (uint8_t *) ((uintptr_t) pk_aligned|(uintptr_t) 0);
+    uint8_t *sk = (uint8_t *) ((uintptr_t) sk_aligned|(uintptr_t) 0);
+    uint8_t *sm = (uint8_t *) ((uintptr_t) sm_aligned|(uintptr_t) 0);
+    uint8_t *m  = (uint8_t *) ((uintptr_t) m_aligned|(uintptr_t) 0);
 
     size_t mlen;
     size_t smlen;
@@ -174,10 +174,10 @@ static int test_sign_detached(void) {
      * data alignment. For example this would catch if an implementation
      * directly uses these pointers to load into vector registers using movdqa.
      */
-    uint8_t *pk = (uint8_t *) ((uintptr_t) pk_aligned|(uintptr_t) 1);
-    uint8_t *sk = (uint8_t *) ((uintptr_t) sk_aligned|(uintptr_t) 1);
-    uint8_t *sig = (uint8_t *) ((uintptr_t) sig_aligned|(uintptr_t) 1);
-    uint8_t *m  = (uint8_t *) ((uintptr_t) m_aligned|(uintptr_t) 1);
+    uint8_t *pk = (uint8_t *) ((uintptr_t) pk_aligned|(uintptr_t) 0);
+    uint8_t *sk = (uint8_t *) ((uintptr_t) sk_aligned|(uintptr_t) 0);
+    uint8_t *sig = (uint8_t *) ((uintptr_t) sig_aligned|(uintptr_t) 0);
+    uint8_t *m  = (uint8_t *) ((uintptr_t) m_aligned|(uintptr_t) 0);
 
     size_t siglen;
     int returncode;

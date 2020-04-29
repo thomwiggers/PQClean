@@ -1,0 +1,22 @@
+name: GeMSS128
+type: signature
+claimed-nist-level: 1
+length-public-key: 352188
+length-secret-key: 13438
+length-signature: 33
+nistkat-sha256: d76f828d87c408c897cfe7a5895af2735286cb661a0a000b3ab6af96a63f4bf3
+testvectors-sha256: b5c9fa6cba6e852cc229c98a225b6f637df142b2f96488a7e745126ae99a238b
+principal-submitters:
+  - GeMMS
+auxiliary-submitters:
+  - GEMMS TEAM
+implementations:
+    - name: avx2
+      version: SUPERCOP GeMMS v2
+      supported_platforms:
+          - architecture: x86_64
+            operating_systems:
+                - Linux
+            required_flags:
+                - avx2
+                - bmi2

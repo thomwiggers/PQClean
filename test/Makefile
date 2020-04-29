@@ -19,7 +19,7 @@ SCHEME_LIBRARY=$(SCHEME_DIR)/lib$(SCHEME)_$(IMPLEMENTATION).a
 SCHEME_FILES=$(wildcard $(SCHEME_DIR)/*.[chsS])
 
 # This -Wall was supported by the European Commission through the ERC Starting Grant 805031 (EPOQUE)
-CFLAGS=-O3 -Wall -Wextra -Wpedantic -Wvla -Werror -std=c99 \
+CFLAGS=-O3 -Wall -Wextra -Wpedantic -Wvla -std=c99 \
 	   -Wundef -Wshadow -Wcast-align -Wpointer-arith -Wmissing-prototypes\
 	   -fstrict-aliasing -fno-common -pipe \
 	   -I$(COMMON_DIR) $(EXTRAFLAGS)
